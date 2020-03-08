@@ -224,5 +224,107 @@ console.log(getColor('orange'))  //returns #f60 because using [] notation
 delete colors['yellow Color'] //using delete operator to remove key value pair yellow Color from colors object.
 delete colors.blue  //using dot notation to remove blue key pair value from color object 
 
-/*EASY PROPERTY ACCESS WITH DESTRUCTURING 
- */
+/*EASY PROPERTY ACCESS WITH DESTRUCTURING: can leverage destructuring to get the specific properties that i need. 
+
+program displays certain info/properties about user.*/
+const user = {
+    name: "Reed",
+    username: "Reedbarger",
+    email: "reed@gmail.com",
+    details: {
+      title: "Programmer"  
+    }  
+  } 
+function displayUser() {
+console.log(`username: ${user.username}, email: ${user.email}`)   //repeats reference to object user. 
+}
+displayUser()
+
+/* instead of referencing the user object every time i want a property from it, i can just reference the property. 
+this makes the code more convenient and readable. these values are detached from the user object and functioning like variables:
+console.log(`username: ${username}, email: ${email}`) 
+
+this can be accomplished via object destructuring. destructuring enables me to just pluck off the properties i want from an
+object. 'destruct' the properties from object. as a result, make properties into their own independent variables. 
+
+to destruct, take the object and the properties of interest (the properties that will become independent variables). set the object
+equal to the variables:
+const username, email = user 
+
+written like this, the code will not work. need to tell JavaScript that i am attempting to get properties out of object 
+and create variables with the same name. so username and email should correspond with the properties username and email from the user
+object. to do this, need to wrap variable declarations in a set of curly braces:
+
+const { username, email } = user  --> the variable name has to match an existing property of the object
+*/
+
+const user = {
+    name: "Reed",
+    username: "Reedbarger",
+    email: "reed@gmail.com",
+    details: {
+      title: "Programmer"  
+    }  
+  }   
+const { username, email } = user  //destructuring: making username and email independent variables that correspond with properties in user 
+function displayUser() {
+console.log(`username: ${username}, email: ${email}`)   
+}
+displayUser()
+
+/* program returns user name and title from the nested details object. can access title by using following dot notation:
+ user.details.title.  this way is a bit messy.
+
+ there are 2 ways to accomplish this. can use partial dot notation to get access to the details property and destructuring the titles 
+ property from nested object :
+ const { title } = user.details
+*/
+
+//this approach works but is using 2 separate destructuring statements for the same object users, repeating steps
+const user = {
+    name: "Reed",
+    username: "Reedbarger",
+    email: "reed@gmail.com",
+    details: {
+      title: "Programmer"  
+    }  
+  }   
+const { title } = user.details //using partial dot notation to get access to details property and destructuring the titles property. 
+const { name } = user  //destructuring: making name an independent variable. 
+function displayUserBio() {
+console.log(`${name} is a ${title}`)  //returns Reed is a Programmer
+}
+displayUserBio()
+
+/*
+condensing two destructuring statements into a single line. 
+program destructure the details property from user and destruct another level further with a colon and another set of curly braces to 
+go one level deeper. from details, turn tile property into const variable in same process as name:
+const { name, details: { title} } = user
+*/
+
+const { name, details: { title} } = user  //revised destructuring statement
+function displayUserBio() {
+  console.log(`${name} is a ${title}`)  //returns Reed is a Programmer
+}
+displayUserBio()
+
+/*can also apply object destructuring to functions. instead of relying on object data being in the global scope, want to pass object 
+as a parameter. so that the function can be more reusable. 
+
+say if i had multiple user bios, i want to reuse the function and pass the user data as an argument: 
+
+pass the entire user object to displayUserBio(). within function declaration, call the parameter for the received object.  
+now have access to all of the user data via the function scope. since userData is an object, with both the name and title properties, can 
+perform the exact same destructuring operation. can do this by replacing the userData parameter with the destructured object. 
+*/
+
+function displayUserBio(userData) { //received user object. userData is an object with the name/title properties. have access to all properties. 
+    console.log(`${name} is a ${title}`)  //will not work. need to perform destructuring within parenthesis of function. 
+  }  
+displayUserBio(user)  //passing the user object
+
+function displayUserBio({ name, details: { title} }) { //replacing userData with destructed object. 
+    console.log(`${name} is a ${title}`)  //returns Reed is a Programmer
+  }  
+displayUserBio(user) 
