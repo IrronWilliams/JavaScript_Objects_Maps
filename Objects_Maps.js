@@ -355,10 +355,10 @@ const { beer, coffee } = recommendations
 console.log(beer) //returns The Craft Beer Co.
 
 //Solution2: Destructure the places to listen to music
-const { traditional, jazz } = recommendations.music; //option 1
+const { traditional, jazz } = recommendations.music //option 1
 console.log(jazz)  //returns The Paris House
 
-const { music: { traditional, jazz } } = recommendations; //option 2 tells JS objects traditional and jazz are nested in the music object
+const { music: { traditional, jazz } } = recommendations  //option 2 tells JS objects traditional and jazz are nested in the music object
 console.log(jazz) //returns The Paris House
 
 //Solution 3
@@ -368,3 +368,56 @@ function displayMusicPlaces({ music: { traditional, jazz } }) {
 displayMusicPlaces(recommendations)
 
 
+/*MERGE OBJECTS WITH THE OBJECT SPREAD 
+
+to create a new object that preserves the default properties on the user object while merging with the new data on the newUser object is
+possible with a new method called object.assign(). object.assign() lets me update an object with properties from another object. 
+
+the 1st argument or argument passed to object.assign() is the object i want returned from this merged operation. argument after the 1st,
+is the properties i want to merge into the 1st argument object. goal is to take properties represented in the 2nd argument and put on the 
+1st object. so merge the properties from newUser onto user and return user object.  the program raises an issue because it mutates 
+original object. This is so because objects are passed by reference not by value. this results in unexpected behavior of objects.  
+*/
+
+const user = {
+    name: "",
+    username: "",
+    phoneNumber: "",
+    email: "",
+    password: ""  
+  } 
+  
+  const newUser = {
+    username: "ReedBarger",
+    email: "reed@gmail.com",
+    password: "mypassword"  
+  } 
+  console.log(Object.assign(user, newUser))  //returns {name: "", username: "ReedBarger", phoneNumber: "", email: "reed@gmail.com", password: "mypassword"}
+  Object.assign(user, newUser)  //returns {name: "", username: "ReedBarger", phoneNumber: "", email: "reed@gmail.com", password: "mypassword"}
+  console.log(user) 
+
+
+/*
+there is a problem with the current program because the original user object is being mutated because objects are passed by reference. 
+to address this behavior, don't want to merge new values on the original object. instead use an entirely new object by passing an empty
+object as the 1st parameter. a brand new object will be returned an have merged in it the properties of user and newUser. 
+
+to avoid mutating the original object, pass an empty object as the 1st argument in object.assign()  which will be what is returned 
+*/
+Object.assign({}, user, newUser) 
+console.log(user)  //confirms user object has not been mutated, and shows empty empty string values for the properties. 
+
+//returns the correct updated values from newUser
+console.log(Object.assign({}, user, newUser))  //returns {name: "", username: "ReedBarger", phoneNumber: "", email: "reed@gmail.com", password: "mypassword"}
+
+/*
+adding a new verified property of false for each user to the object being used in Object.assign. 
+ */
+//Option1
+const verifiedDefault = {
+    verified: false  
+  } 
+  
+  console.log(Object.assign({}, user, newUser, verifiedDefault)) 
+//Option2 --> add object inline w/o creating declaring a separate variable.
+console.log(Object.assign({}, user, newUser, { verified: false })) 
