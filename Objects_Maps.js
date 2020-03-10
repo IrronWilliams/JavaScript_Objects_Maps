@@ -452,3 +452,24 @@ const user = {
   console.log(createdUser)  //returns {name: "", username: "ReedBarger", phoneNumber: "", email: "reed@gmail.com", password: "mypassword", verified: false}
 
 
+/*HOW MAPS CAN DO WHAT OBJECTS CANNOT
+
+Objects come with limitations. its keys have to be strings or less frequently used symbols. if i try to use numbers or booleans as keys.
+whatever data type provided as a key, there is a implicit conversion to a string. as a result, cant have unique data types for keys. 
+in this way, objects are not flexible. 
+
+there is a solution called maps. maps is an object data type and can be considered as objects plus. they are meant to be used just like 
+objects as a key/value storage. but created to address the limitations/unexpected behavior of objects. maps will preserve and not 
+implicitly convert key to a string. the basic syntax/structure for map = 
+new Map([
+  ['key', 'value']  
+]);
+
+use maps in following situation:
+1. if object key is not a string or symbol
+ 
+
+
+
+Object.keys() tells me the key value type. 
+*/
