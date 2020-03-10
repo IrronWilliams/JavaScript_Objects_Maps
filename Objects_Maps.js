@@ -338,7 +338,6 @@ organized by what you'd like to do (eat pancakes, drink coffee etc).
      a) Logs out the music venues in recommendations when invoked 
      b) Uses object descructuring to get the "traditional" and "jazz" keys from the argument
 */
-
 const recommendations = {
     pancakes: 'Nowhere Man',
     riceBowls: 'Pompoko',
@@ -367,7 +366,6 @@ function displayMusicPlaces({ music: { traditional, jazz } }) {
 }
 displayMusicPlaces(recommendations)
 
-
 /*MERGE OBJECTS WITH THE OBJECT SPREAD 
 
 to create a new object that preserves the default properties on the user object while merging with the new data on the newUser object is
@@ -378,7 +376,6 @@ is the properties i want to merge into the 1st argument object. goal is to take 
 1st object. so merge the properties from newUser onto user and return user object.  the program raises an issue because it mutates 
 original object. This is so because objects are passed by reference not by value. this results in unexpected behavior of objects.  
 */
-
 const user = {
     name: "",
     username: "",
@@ -395,8 +392,6 @@ const user = {
   console.log(Object.assign(user, newUser))  //returns {name: "", username: "ReedBarger", phoneNumber: "", email: "reed@gmail.com", password: "mypassword"}
   Object.assign(user, newUser)  //returns {name: "", username: "ReedBarger", phoneNumber: "", email: "reed@gmail.com", password: "mypassword"}
   console.log(user) 
-
-
 /*
 there is a problem with the current program because the original user object is being mutated because objects are passed by reference. 
 to address this behavior, don't want to merge new values on the original object. instead use an entirely new object by passing an empty
@@ -416,8 +411,44 @@ adding a new verified property of false for each user to the object being used i
 //Option1
 const verifiedDefault = {
     verified: false  
+  }   
+console.log(Object.assign({}, user, newUser, verifiedDefault)) 
+
+/*Option2: add object inline w/o creating/declaring a separate variable. 
+object.assign() is responsible for gathering object properties and their corresponding values and merging them into a new object. 
+However, using this approach is not always intuitive. Better to use the spread operator.*/
+console.log(Object.assign({}, user, newUser, { verified: false })) 
+
+/*THE SPREAD OPERATOR: spreads objects properties into another object. include'...' before the object i want to spread in. 
+the spread operator has all of the advantages as object.assign() with reduced syntax, creates objects in a more intuitive way, 
+and does so without mutating objects. 
+
+the order is significant for both object.assign and the spread operator. the object is supplied with the last value. for example, 
+if user had a default value of true for verification (verified : 'true') and later in the program, i passed a value of 'false' for 
+the key verified, the value for verified will be updated to false. As a rule, when performing updates to existing properties, make sure 
+the updated values come at the end or after the initial value. 
+
+program creates an object called createdUser and spreads the properties from user and newUser into the createdUser object. 
+
+the use cases for object.assign() and the spread operator:
+1. use them to establish common default properties of any object thru merging 2 or more objects. 
+2. to non-destructively update or add properties in a way that does not mutate original object. 
+*/
+const user = {
+    name: "",
+    username: "",
+    phoneNumber: "",
+    email: "",
+    password: ""  
+  } 
+
+  const newUser = {
+    username: "ReedBarger",
+    email: "reed@gmail.com",
+    password: "mypassword"  
   } 
   
-  console.log(Object.assign({}, user, newUser, verifiedDefault)) 
-//Option2 --> add object inline w/o creating declaring a separate variable.
-console.log(Object.assign({}, user, newUser, { verified: false })) 
+  const createdUser = { ...user, ...newUser, verified: false } 
+  console.log(createdUser)  //returns {name: "", username: "ReedBarger", phoneNumber: "", email: "reed@gmail.com", password: "mypassword", verified: false}
+
+
