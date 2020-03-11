@@ -152,8 +152,8 @@ the value and return it.
 this program will return null because of dot notation.  notes below will explain why and how to resolve. */
 const colors = {
     yellow: '#ff0',
-    blue: "#f00",
-    orange: "#f60"
+    blue: '#f00',
+    orange: '#f60'
   } 
 
 function getColor(key) {
@@ -182,11 +182,11 @@ const hexCode = '#0f0'
 
 const colors = {
   'yellow Color': '#ff0',
-  blue: "#f00",
-  orange: "#f60"
+  blue: '#f00',
+  orange: '#f60'
 } 
 colors[color] = hexCode  //using square bracket notation [] to add key value pair to colors object
-console.log(colors)  //returns {yellow Color: "#ff0", blue: "#f00", orange: "#f60", green: "#0f0"}
+console.log(colors)  //returns {yellow Color: '#ff0', blue: '#f00', orange: '#f60', green: '#0f0'}
 
 /*a simple approach is to not mutate the object with a key value pair. but instead, add key value pair directly on the object. */
 const color = 'black' 
@@ -194,19 +194,19 @@ const hexCode = '#000'
 
 const colors = {
   'yellow Color': '#ff0',
-  blue: "#f00",
-  orange: "#f60",
+  blue: '#f00',
+  orange: '#f60',
   [color]: hexCode
 } 
-console.log(colors)  //returns {yellow Color: "#ff0", blue: "#f00", orange: "#f60", black: "#000"}
+console.log(colors)  //returns {yellow Color: '#ff0', blue: '#f00', orange: '#f60', black: '#000'}
 
 /*coming back to opening problem, purpose of program is to find value for color blue. program returns null or undefined. function 
 couldn't find key with the name although provided argument for it. this is so because using dot notation in the function.  
 to address this issue need to use bracket notation.  */
 const colors = {
     yellow: '#ff0',
-    blue: "#f00",
-    orange: "#f60"
+    blue: '#f00',
+    orange: '#f60'
   } 
 
 function getColor(key) {
@@ -228,11 +228,11 @@ delete colors.blue  //using dot notation to remove blue key pair value from colo
 
 program displays certain info/properties about user.*/
 const user = {
-    name: "Reed",
-    username: "Reedbarger",
-    email: "reed@gmail.com",
+    name: 'Reed',
+    username: 'Reedbarger',
+    email: 'reed@gmail.com',
     details: {
-      title: "Programmer"  
+      title: 'Programmer'  
     }  
   } 
 function displayUser() {
@@ -259,11 +259,11 @@ const { username, email } = user  --> the variable name has to match an existing
 */
 
 const user = {
-    name: "Reed",
-    username: "Reedbarger",
-    email: "reed@gmail.com",
+    name: 'Reed',
+    username: 'Reedbarger',
+    email: 'reed@gmail.com',
     details: {
-      title: "Programmer"  
+      title: 'Programmer'  
     }  
   }   
 const { username, email } = user  //destructuring: making username and email independent variables that correspond with properties in user 
@@ -282,11 +282,11 @@ displayUser()
 
 //this approach works but using 2 separate destructuring statements for the same object users, repeating steps
 const user = {
-    name: "Reed",
-    username: "Reedbarger",
-    email: "reed@gmail.com",
+    name: 'Reed',
+    username: 'Reedbarger',
+    email: 'reed@gmail.com',
     details: {
-      title: "Programmer"  
+      title: 'Programmer'  
     }  
   }   
 const { title } = user.details //using partial dot notation to get access to details property and destructuring the titles property. 
@@ -336,7 +336,7 @@ organized by what you'd like to do (eat pancakes, drink coffee etc).
 2. Destructure the places to listen to music
 3. Write a function that takes the recommendations object as an argument and that
      a) Logs out the music venues in recommendations when invoked 
-     b) Uses object descructuring to get the "traditional" and "jazz" keys from the argument
+     b) Uses object descructuring to get the 'traditional' and 'jazz' keys from the argument
 */
 const recommendations = {
     pancakes: 'Nowhere Man',
@@ -377,20 +377,20 @@ is the properties i want to merge into the 1st argument object. goal is to take 
 original object. This is so because objects are passed by reference not by value. this results in unexpected behavior of objects.  
 */
 const user = {
-    name: "",
-    username: "",
-    phoneNumber: "",
-    email: "",
-    password: ""  
+    name: '',
+    username: '',
+    phoneNumber: '',
+    email: '',
+    password: ''  
   } 
   
   const newUser = {
-    username: "ReedBarger",
-    email: "reed@gmail.com",
-    password: "mypassword"  
+    username: 'ReedBarger',
+    email: 'reed@gmail.com',
+    password: 'mypassword'  
   } 
-  console.log(Object.assign(user, newUser))  //returns {name: "", username: "ReedBarger", phoneNumber: "", email: "reed@gmail.com", password: "mypassword"}
-  Object.assign(user, newUser)  //returns {name: "", username: "ReedBarger", phoneNumber: "", email: "reed@gmail.com", password: "mypassword"}
+  console.log(Object.assign(user, newUser))  //returns {name: '', username: 'ReedBarger', phoneNumber: '', email: 'reed@gmail.com', password: 'mypassword'}
+  Object.assign(user, newUser)  //returns {name: '', username: 'ReedBarger', phoneNumber: '', email: 'reed@gmail.com', password: 'mypassword'}
   console.log(user) 
 /*
 there is a problem with the current program because the original user object is being mutated because objects are passed by reference. 
@@ -403,7 +403,7 @@ Object.assign({}, user, newUser)
 console.log(user)  //confirms user object has not been mutated, and shows empty empty string values for the properties. 
 
 //returns the correct updated values from newUser
-console.log(Object.assign({}, user, newUser))  //returns {name: "", username: "ReedBarger", phoneNumber: "", email: "reed@gmail.com", password: "mypassword"}
+console.log(Object.assign({}, user, newUser))  //returns {name: '', username: 'ReedBarger', phoneNumber: '', email: 'reed@gmail.com', password: 'mypassword'}
 
 /*
 adding a new verified property of false for each user to the object being used in Object.assign. 
@@ -435,41 +435,167 @@ the use cases for object.assign() and the spread operator:
 2. to non-destructively update or add properties in a way that does not mutate original object. 
 */
 const user = {
-    name: "",
-    username: "",
-    phoneNumber: "",
-    email: "",
-    password: ""  
+    name: '',
+    username: '',
+    phoneNumber: '',
+    email: '',
+    password: ''  
   } 
 
   const newUser = {
-    username: "ReedBarger",
-    email: "reed@gmail.com",
-    password: "mypassword"  
+    username: 'ReedBarger',
+    email: 'reed@gmail.com',
+    password: 'mypassword'  
   } 
   
   const createdUser = { ...user, ...newUser, verified: false } 
-  console.log(createdUser)  //returns {name: "", username: "ReedBarger", phoneNumber: "", email: "reed@gmail.com", password: "mypassword", verified: false}
+  console.log(createdUser)  //returns {name: '', username: 'ReedBarger', phoneNumber: '', email: 'reed@gmail.com', password: 'mypassword', verified: false}
 
 
 /*HOW MAPS CAN DO WHAT OBJECTS CANNOT
 
-Objects come with limitations. its keys have to be strings or less frequently used symbols. if i try to use numbers or booleans as keys.
-whatever data type provided as a key, there is a implicit conversion to a string. as a result, cant have unique data types for keys. 
+Objects come with limitations. its keys have to be strings or less frequently used symbols. whatever data type provided as a key, 
+there is a implicit conversion to a string. as a result, cant have unique data types for keys. 
 in this way, objects are not flexible. 
 
-there is a solution called maps. maps is an object data type and can be considered as objects plus. they are meant to be used just like 
+there is a solution called maps. maps is an object data type and can be considered as objects PLUS. they are meant to be used just like 
 objects as a key/value storage. but created to address the limitations/unexpected behavior of objects. maps will preserve and not 
-implicitly convert key to a string. the basic syntax/structure for map = 
-new Map([
-  ['key', 'value']  
-]);
+implicitly convert key to a string. maps are also more flexible (can hold multiple key data-types) and more structured (preserves order)
+
 
 use maps in following situation:
 1. if object key is not a string or symbol
+2. if i want to preserve the insertion order of the keys (maps preserves the order, objects do not)
  
 
 
 
 Object.keys() tells me the key value type. 
+
+a. syntax to create a map = new Map().  
+b. like objects, can declare values on a map immediately when created. will need square brackets to create key/value pair: new Map([])
+c. for each key/value pair, add additional set of square brackets, with a comma between key and value  ['key', 'value']
+
 */
+//basic syntax for maps
+new Map([
+    ['key', 'value']  
+  ]) 
+
+/*adding a key/value pair by using set() method, which is available on every created map. set() mutates object. to add a key/value pair:
+map1.set('key', 'value')  */
+const map1 = new Map([
+    [1, 1],
+    [true, true]  
+  ]) 
+  map1.set('key', 'value')  //using set() method to add key/value to map1
+  console.log([...map1.keys()]) //returns [1 , true, 'key']. using spread operator 
+
+/*forEach() method created to iterate over Map array. forEach() is a method that accepts a callback function. the forEach() function
+give what i pass to it, the 2 pieces of data that i want. for each pair in map1, i want its key and value.  */
+const map1 = new Map([
+    [1, 1],
+    [true, true]  
+  ]) 
+  
+  map1.set('key', 'value') 
+  
+  map1.forEach((value, key) => {
+    console.log(key, value)   
+  })  //returns 1,1  true ,true   key ,'value'
+
+/*in addition to primitive values, can also use entire objects as keys on maps. for example, have objects that consists of user names.
+need to store important data but do not want to attach the data to the object. for example, there are secret keys associated with each
+user and want to ensure the keys are not visible to the user. solving this with objects is not possible. but can use maps as a workaround. 
+
+approach is to make users the keys on the objects and the related secret keys as values. need to create a map to make user1/user2 the 
+keys on the object and their related secret keys as values. so the map will store these values from different objects as key/value pairs, 
+with user1 linked to secretKey1 and user2 linked to secretKey2.  
+
+*/
+const user1 = { name: 'john' }
+const user2 = { name: 'mary' }
+const secretKey1 = 'asldjfalskdjf' 
+const secretKey2 = 'alksdjfakjsdf' 
+
+const secretKeyMap = new Map([
+    [user1, secretKey1],
+    [user2, secretKey2]  
+  ])   
+console.log(secretKeyMap) //returns Map, confirms user objects were made into keys
+
+/*a downside to this approach is the difficulty to access some of the properties. for example, getting the name property from user1.  
+this approach is best when i want to just get the value. to get the secret key or value for each user, i just need to reference each 
+user stored in their variables. i do this by doing the opposite of the set() method  which is the get() method. can use the get() method
+to get the users secret key. 
+
+another downside is that the objects can be very large, meaning having multiple properties. this can take up a lot of memory in the 
+application which can make it slower. when done using the map, i want it to be garbage collected which means thrown away so that it 
+clears up more spaces/memory for new values. to do so, can use a variant of map that is optimized for garbage collection. this variant
+is called weak map which was designed specifically for this purpose. because of this, it only accepts objects as keys. to use weak map, 
+simply replace Map with WeakMap. WeakMap returns same results. 
+
+a significant improvement that map brings to data that needs to be stored as key/value pairs is the ability to know how long the object
+is. the normal JavaScript object does not have a length property that tells how many values it has. for normal object, will need to use
+object.keys() as a workaround. use object.keys() to convert object into an array of its key values, then use the length properties of 
+arrays to see how many data points is has. Object.keys(nums).length.  map provides a much more convenient alternative called size. 
+size provides the number of key/value pairs in a map. 
+
+will still rely heavily on objects to hold structured data. but objects do have limitations:
+1. only strings and symbols can be used as keys.
+2. objects can't be used as keys. 
+3. objects can't be easily iterated over
+4. can't easily get the length of objects.
+
+map can solve all of these use cases/limitations of objects as an effective key/value pair storage. think of maps and objects as let and 
+const. maps don't replace objects. maps just have their specific use cases. use objects the majority of the time but if my application has
+requirements that are limited with objects, use maps.
+*/
+
+//creates a new map and uses objects user1/user2 as keys and objects secretKey1/secretKey2 as values.
+const secretKeyMap = new Map([
+    [user1, secretKey1],
+    [user2, secretKey2]  
+  ])   
+console.log(secretKeyMap) //returns Map, confirms user objects were made into keys
+
+const key = secretKeyMap.get(user1)  //using get() method to get secret key for user1
+console.log(key)  //returns asldjfalskdjf
+
+const secretKeyMap = new WeakMap([ //using WeakMap to optimize garbage collection. 
+    [user1, secretKey1],
+    [user2, secretKey2]  
+  ]) 
+const key = secretKeyMap.get(user1) 
+console.log(key)  //still returns asldjfalskdjf
+
+//using size to count the number of key/value pairs
+  const userMap = new Map([
+    ['name', 'john'],
+    ['verified', true]  
+  ]) 
+  
+  console.log(userMap.size)  //returns 2
+
+/*Challenge: 
+1. Take the object (contains a favourite place in Brighton, UK), and turn it into a Map
+2. Add a boolean property 'visited', to indicate places that you've been to it
+3. Add an integer property 'averageBill' with how much you spend there on average
+4. Fetch one of the properties using the get() method
+*/
+const favouritePlace = {
+    music: 'jazz',
+    name: 'Paris House'
+}
+//turning object into a map
+const favouritePlaceMap = new Map([
+    ['music', 'jazz'],
+    ['name', 'Paris House'],
+    ['visited', true],
+    ['averageBill', 17.4]
+])
+console.log(favouritePlaceMap.get('averageBill')) //returns 17.4
+
+
+
+/*IMPROVE METHODS WITH ARROW FUNCTIONS */
