@@ -599,3 +599,5 @@ console.log(favouritePlaceMap.get('averageBill')) //returns 17.4
 
 
 /*IMPROVE METHODS WITH ARROW FUNCTIONS */
+
+//test
