@@ -596,8 +596,83 @@ const favouritePlaceMap = new Map([
 ])
 console.log(favouritePlaceMap.get('averageBill')) //returns 17.4
 
+/*IMPROVE METHODS WITH ARROW FUNCTIONS: Proper understanding of the 'this' keyword and how it should be used. 
+
+the 'this' keyword is a feature of functions that allows me to get access to an objects data. the 'this' keyword
+is a complex/tricky concept to understand. partly because the 'this' keyword value is determined dynamically and is
+based on how the function is called that references the given keyword. i can use the 'this' keyword within the 
+getBio() method to be able to access the 2 properties to make the function work. in this example, think of 'this' 
+being equal to the variable userData. as a result, that allows me to use this.username and this.title in the getBio()
+method.
+
+the benefit of using 'this' keyword is that i don't have to look at the variable name the object has been assigned to.
+benefit is realized if the variable name of the object changes, i will have to update all occurrences of the old 
+variable name to the new variable name. for example, console.log(`User ${userData.username} is a ${userData.title}`)
+will need to be changed if the variable name of the object has been changed to user. the 'this' keyword relieves me 
+from a lot of tedious work. 
+
+the 'this' keyword was provided to the language for methods on objects to be able to use properties off of 
+the objects that they were placed on. 
 
 
-/*IMPROVE METHODS WITH ARROW FUNCTIONS */
+Object below consists of a couple of properties  username and title. for each user, want to display the data across
+the app to other users on their profile page. the getBio() method will display the data. the getBio() method is a 
+function made with a function declaration. getBio() is equivalent of getBio: function(). Only functions declared with 
+a function keyword have a dynamic 'this'. meaning the value of 'this' is determined by how the function is called. 
 
-//test
+when 'this' is used with an arrow function, 'this' is grabbed from exactly where its needed. because its points to the scope above where 
+the arrow function was declared. as compared to having a dynamic 'this' that can change how a function is defined, arrow functions have an
+lexical 'this', meaning its value is determined lexically or by the surrounding scope. */
+const userData = { 
+  username: "Reed",
+  title: "JavaScript Programmer",
+  getBio() {
+    console.log(`User (username) is a (title)`) 
+  }  
+}
+/*can think of 'this' being equal to the variable userData. as a result, can update getBio() method */
+const userData = { 
+  username: "Reed",
+  title: "JavaScript Programmer",
+  getBio() {
+    console.log(`User ${this.username} is a ${this.title}`)  //updating with 'this'
+  }  
+}
+userData.getBio()  //calling method returns User Reed is a JavaScript Programmer
+
+/*askToFriend method will console.log 'Would you like to friend Reed?' 2 seconds after function is called. */
+const userData = { 
+  username: "Reed",
+  title: "JavaScript Programmer",
+  getBio() {
+    console.log(`User ${this.username} is a ${this.title}`) 
+  },
+  askToFriend() {
+    setTimeout(() => {
+      console.log(`Would you like to friend ${this.username}?`)    //arrow function has context. returns Would you like to friend Reed? 
+    }, 2000)   //2000 = 2 seconds
+  } 
+}
+userData.askToFriend() 
+
+/*below, using an arrow function with getBio method. when getBio() is called, returns User undefined is a undefined.  this is so because 
+arrow functions have a lexical 'this'. not getting property username and title from userData object but instead getting from whatever 
+'this' is set to from scope above. if i log 'this' in the global scope, console.log(this), i get Window. which means, program attempting 
+to get username and title properties off of the window. and if a property can't be found on a given object, it returns undefined. 
+
+so arrow functions are great if they have a context, like that of the askToFriend method above. arrow functions cannot be used to create
+a new 'this' binding.   */
+const userData = { 
+  username: "Reed",
+  title: "JavaScript Programmer",
+  getBio: () => {
+    console.log(`User ${this.username} is a ${this.title}`)  //returns User undefined is a undefined
+  },
+  askToFriend() {
+    setTimeout(() => {
+      console.log(`Would you like to friend ${this.username}?`)    
+    }, 2000)   
+  } 
+}
+userData.getBio()  //calling getBio 
+console.log(this) //returns Window
