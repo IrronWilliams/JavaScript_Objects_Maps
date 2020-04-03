@@ -1,7 +1,7 @@
 /*USE OBJECTS TO FOR MANAGING KEY VALUE PAIRS
 Objects provides a powerful way to manage and organize related data
 
-Mental reference for variables are boxes where i can store anything i like. objects are like file cabinet.
+Mental reference for variables are boxes where i can store anything i like. objects are like a file cabinet.
 to get items from a file cabinet, u need a reference, such as a file. with a given name. every value on an object 
 has a separate file and a separate identifier that i can use to access (aka keys or properties). objects are made 
 with object literal syntax {} where keys and values are held. if object is a file cabinet, the keys are the name 
